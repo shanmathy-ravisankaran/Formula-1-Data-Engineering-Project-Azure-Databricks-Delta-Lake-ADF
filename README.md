@@ -72,12 +72,27 @@ Dominant Teams
 
     Connect Power BI to Gold layer tables
 
-📂 Repository Structure
+📂 Project Structure
 
-    adf/                # Azure Data Factory JSONs (datasets, pipelines, triggers)
-    databricks/         # PySpark & SQL notebooks for ingestion, transformation, processing
-    docs/               # Architecture diagrams, dashboard screenshots
-    scripts/            # Optional utility scripts for setup/testing
+    Formula-1-Data-Engineering-Project-Azure-Databricks-Delta-Lake-ADF/
+    │
+    ├── adf_pipelines/       # Azure Data Factory JSON pipeline exports
+    ├── databricks/          # Databricks workspace code
+    │   ├── notebooks/       # PySpark & SQL notebooks
+    │   │   ├── ingestion/   # Ingestion jobs
+    │   │   ├── transformation/ # Transformation jobs
+    │   │   └── analysis/    # Analytical queries
+    │   ├── libs/            # Common config & helper functions
+    │   ├── setup/           # Storage mounts & environment setup
+    │   └── utils/           # Utility scripts
+    │
+    ├── docs/                # Architecture diagrams & dashboard screenshots
+    ├── sample-data/         # Minimal CSV/JSON samples for quick testing
+    │   ├── raw/             # Raw source data
+    │   └── incremental_load_data/ # Example incremental load
+    │
+    ├── LICENSE              # MIT License
+    └── README.md            # Project documentation
 
 📈 Results & Learnings
 
@@ -88,4 +103,4 @@ Dominant Teams
 
 📜 License
 
-  This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details
+ This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details
