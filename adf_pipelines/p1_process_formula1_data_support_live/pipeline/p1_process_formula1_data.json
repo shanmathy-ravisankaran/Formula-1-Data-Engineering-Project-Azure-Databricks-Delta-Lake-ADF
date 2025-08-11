@@ -1,0 +1,67 @@
+{
+    "name": "p1_process_formula1_data",
+    "properties": {
+        "activities": [
+            {
+                "name": "Execute_Ingestion",
+                "type": "ExecutePipeline",
+                "dependsOn": [],
+                "policy": {
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "pipeline": {
+                        "referenceName": "pl_ingest_formula_data",
+                        "type": "PipelineReference"
+                    },
+                    "waitOnCompletion": true,
+                    "parameters": {
+                        "p_window_end_date": {
+                            "value": "@pipeline().parameters.p_window_end_date",
+                            "type": "Expression"
+                        }
+                    }
+                }
+            },
+            {
+                "name": "Execute_Transformation",
+                "type": "ExecutePipeline",
+                "dependsOn": [
+                    {
+                        "activity": "Execute_Ingestion",
+                        "dependencyConditions": [
+                            "Completed"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "pipeline": {
+                        "referenceName": "pl_transform_formula1_data",
+                        "type": "PipelineReference"
+                    },
+                    "waitOnCompletion": true,
+                    "parameters": {
+                        "p_window_end_date": {
+                            "value": "@pipeline().parameters.p_window_end_date",
+                            "type": "Expression"
+                        }
+                    }
+                }
+            }
+        ],
+        "concurrency": 1,
+        "parameters": {
+            "p_window_end_date": {
+                "type": "string"
+            }
+        },
+        "annotations": [],
+        "lastPublishTime": "2025-08-09T16:37:45Z"
+    },
+    "type": "Microsoft.DataFactory/factories/pipelines"
+}

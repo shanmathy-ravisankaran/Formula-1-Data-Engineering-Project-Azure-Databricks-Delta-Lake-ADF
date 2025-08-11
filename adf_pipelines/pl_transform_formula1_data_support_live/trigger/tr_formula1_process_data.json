@@ -1,0 +1,29 @@
+{
+    "name": "tr_formula1_process_data",
+    "properties": {
+        "annotations": [],
+        "runtimeState": "Started",
+        "pipeline": {
+            "pipelineReference": {
+                "referenceName": "p1_process_formula1_data",
+                "type": "PipelineReference"
+            },
+            "parameters": {
+                "p_window_end_date": "@trigger().outputs.windowEndTime"
+            }
+        },
+        "type": "TumblingWindowTrigger",
+        "typeProperties": {
+            "frequency": "Minute",
+            "interval": 5,
+            "startTime": "2025-08-08T19:08:00Z",
+            "endTime": "2025-09-10T19:08:00Z",
+            "delay": "00:00:00",
+            "maxConcurrency": 50,
+            "retryPolicy": {
+                "intervalInSeconds": 30
+            },
+            "dependsOn": []
+        }
+    }
+}

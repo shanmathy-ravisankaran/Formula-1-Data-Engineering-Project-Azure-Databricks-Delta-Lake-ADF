@@ -1,0 +1,6 @@
+selected resource name:		pl_ingest_formula_data
+selected resource type:		pipeline
+factory name:			databricks-learning1-adf
+factory location:		eastus
+subscription id:		21553909-5e75-494d-9dc4-b894fc72b900
+time of download (UTC):		Sat, 09 Aug 2025 20:23:51 GMT
